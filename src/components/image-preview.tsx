@@ -1,4 +1,4 @@
-import { type VariantProps, tv } from "tailwind-variants"
+import { tv } from "tailwind-variants"
 
 const imageFilePreviewVariants = tv({
     base: 'rounded-lg overflow-hidden',
@@ -12,7 +12,7 @@ interface imageFilePreviewProps extends React.ComponentProps<'img'> {
     imageClassName?: string
 }
 
-export default function ImagieFilePreview({
+export default function ImagiePreview({
     className,
     imageClassName,
     ...props

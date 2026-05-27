@@ -7,7 +7,7 @@ import Divider from "../components/divider";
 import InputCheckbox from "../components/input-checkbox";
 import InputSingleFile from "../components/input-single-file";
 import { useForm } from "react-hook-form";
-import ImagieFilePreview from "../components/image-file-preview";
+import ImagieFilePreview from "../components/image-preview";
 import { Dialog, DialogBody, DialogContent, DialogFooter, DialogHeader, DialogTrigger } from "../components/dialog";
 import { DialogClose } from "@radix-ui/react-dialog";
 
