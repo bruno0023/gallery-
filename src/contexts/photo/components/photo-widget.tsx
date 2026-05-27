@@ -21,10 +21,10 @@ export default function PhotoWidget({
                 <ImagiePreview
                     src={`/images/${photo.imageId}`}
                     title={photo.title}
-                    imageClassName="w-54.25 h-54.25 rounded-lg"
+                    imageClassName="w-43.5 h-43.5 rounded-lg"
                 />
             ) : (
-                <Skeleton className="w-54.25 h-54.25 rounded-lg" />
+                <Skeleton className="w-43.5 h-43.5 rounded-lg" />
             )}
 
             <div className="flex flex-col gap-2">
@@ -37,14 +37,14 @@ export default function PhotoWidget({
                 <div className='flex gap-2 min-h-5.5'>
                     {!loading ? (
                         <>
-                            {photo.albums.slice(0, 2).map(album => (
+                            {photo.albums.slice(0, 1).map(album => (
                                 <Badge className="truncate" size='xs' key={album.id}>
                                     {album.title}
                                 </Badge>
                             ))}
-                            {photo.albums.length > 2 &&
+                            {photo.albums.length > 1 &&
                                 <Badge size='xs'>
-                                    +{photo.albums.length - 2}
+                                    +{photo.albums.length - 1}
                                 </Badge>
                             }
                         </>
