@@ -1,0 +1,71 @@
+import ImagiePreview from "../../../components/image-preview"
+import Text from "../../../components/text"
+import Skeleton from "../../../components/skeleton"
+import type { Photo } from "../models/photo"
+import Badge from "../../../components/badge"
+import { buttonTextVariants, buttonVariants} from "../../../components/button"
+import { Link } from "react-router"
+
+interface PhotoWidgetProps {
+    photo: Photo,
+    loading?: boolean
+}
+
+export default function PhotoWidget({
+    photo,
+    loading
+}: PhotoWidgetProps) {
+    return (
+        <div className="flex flex-col gap-4">
+            {!loading ? (
+                <ImagiePreview
+                    src={`/images/${photo.imageId}`}
+                    title={photo.title}
+                    imageClassName="w-54.25 h-54.25 rounded-lg"
+                />
+            ) : (
+                <Skeleton className="w-54.25 h-54.25 rounded-lg" />
+            )}
+
+            <div className="flex flex-col gap-2">
+                {!loading ? (
+                    <Text variant='paragraph-large' className='truncate'>{photo.title}</Text>
+                ) : (
+                    <Skeleton className="w-full h-6" />
+                )}
+
+                <div className='flex gap-2 min-h-5.5'>
+                    {!loading ? (
+                        <>
+                            {photo.albums.slice(0, 2).map(album => (
+                                <Badge className="truncate" size='xs' key={album.id}>
+                                    {album.title}
+                                </Badge>
+                            ))}
+                            {photo.albums.length > 2 &&
+                                <Badge size='xs'>
+                                    +{photo.albums.length - 2}
+                                </Badge>
+                            }
+                        </>
+                    ) : (
+                        <>
+                            {Array.from({ length: 2 }).map((_, index) => (
+                                <Skeleton key={`album-loading-${index}`} className="w-full h-5 rounded-sm" />
+                            ))}
+                        </>
+                    )}
+                </div>
+            </div>
+
+            {!loading ? (
+                <Link to={`/fotos/${photo.id}`} className={buttonVariants({ variant: 'secondary', className: 'py-2 px-2' })}>
+                    <Text className={buttonTextVariants({ variant: 'secondary', size: 'sm' })}>Detalhes da imagem</Text>
+                </Link>
+
+            ) : (
+                <Skeleton className="w-full h-10" />
+            )}
+        </div>
+    )
+}
