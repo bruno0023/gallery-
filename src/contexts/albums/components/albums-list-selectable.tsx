@@ -51,7 +51,7 @@ export default function AlbumsListSelectable({
                 </li>
             ))}
 
-            {loading && Array.from({ length: 5 }).map((_, index) => (
+            {loading && Array.from({ length: 5}).map((_, index) => (
                 <li key={`album-selectable-loading-${index}`}>
                     <Skeleton className="w-full h-6" />
                     {index !== 5 - 1 && <Divider className='mt-4' />}
