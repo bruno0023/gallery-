@@ -1,3 +1,5 @@
+import { DialogClose } from "@radix-ui/react-dialog";
+
 import Button from "../components/button";
 import Text from "../components/text";
 import ButtonIcon from "../components/button-icon";
@@ -9,11 +11,12 @@ import InputSingleFile from "../components/input-single-file";
 import { useForm } from "react-hook-form";
 import ImagieFilePreview from "../components/image-preview";
 import { Dialog, DialogBody, DialogContent, DialogFooter, DialogHeader, DialogTrigger } from "../components/dialog";
-import { DialogClose } from "@radix-ui/react-dialog";
+
 
 //Icones
 import ChevronLeftIcon from "../assets/icons/chevron-left.svg?react";
 import ChevronRightIcon from "../assets/icons/chevron-right.svg?react";
+
 
 export default function PageComponents() {
 

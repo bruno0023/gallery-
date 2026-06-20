@@ -1,5 +1,6 @@
 import InputText from "./input-text";
 import React from "react";
+import usePhotos from "../contexts/photo/hooks/use-photos";
 
 //Icone
 import SearchIcon from "../assets/icons/search.svg?react";
@@ -8,12 +9,13 @@ import { debounce } from "../helpers/utils";
 export default function PhotoSearch() {
 
     const [inputValue, SetInputValue] = React.useState("")
+    const { filters } = usePhotos();
 
     const debouncedSetValue = React.useCallback(
         debounce((value: string) => {
-            console.log("Valor buscado:", value);
+            filters.setQ(value)
         }, 200),
-        []
+        [filters.setQ]
     );
 
     function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
